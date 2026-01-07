@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Compare | Side-by-Side</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <div class="logo-section">
+        <h1>IMAGE COMPARE</h1>
+        <p id="stats-label">Select folders to start comparison</p>
+      </div>
+
+      <div class="controls">
+        <div class="setting-group">
+          <label for="grid-config">Grid:</label>
+          <select id="grid-config">
+            <option value="auto">Auto (Single Row)</option>
+            <option value="1-1">1x1 View</option>
+            <option value="2-2">2x2 Grid</option>
+            <option value="3-3">3x3 Grid</option>
+            <option value="4-4" selected>4x4 Grid</option>
+            <option value="6-6">6x6 Grid</option>
+            <option value="8-8">8x8 Grid</option>
+          </select>
+        </div>
+
+        <div class="setting-group">
+          <label for="view-mode">View:</label>
+          <select id="view-mode">
+            <option value="list">List All</option>
+            <option value="single" selected>Single Match</option>
+          </select>
+        </div>
+
+        <div id="nav-controls" class="setting-group" style="display: flex;">
+          <button id="prev-btn" title="Previous Image (Left Arrow)">◀</button>
+          <span id="current-index-label" style="font-size: 0.8rem; min-width: 60px; text-align: center;">0 / 0</span>
+          <button id="next-btn" title="Next Image (Right Arrow)">▶</button>
+        </div>
+
+        <button id="select-btn" class="primary">Select Folders</button>
+        <input type="file" id="folder-input" webkitdirectory directory multiple />
+      </div>
+    </header>
+
+    <main id="main-content">
+      <div class="empty-state">
+        <h2>Visualize & Compare</h2>
+        <p>Select multiple folders containing images with the same filenames to view them side-by-side. Perfect for
+          comparing results across different versions or models.</p>
+        <button id="empty-select-btn" class="primary">Get Started</button>
+      </div>
+
+      <div id="comparison-results" class="comparison-container" style="display: none;">
+        <!-- Results will be injected here -->
+      </div>
+    </main>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

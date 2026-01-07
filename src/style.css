@@ -1,0 +1,326 @@
+:root {
+  --bg-color: #0f172a;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --accent-color: #38bdf8;
+  --accent-glow: rgba(56, 189, 248, 0.5);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header & Glassmorphism */
+header {
+  padding: 1.5rem 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  position: sticky;
+  top: 0;
+}
+
+.logo-section h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.025em;
+}
+
+.logo-section p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Settings & Controls */
+.controls {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.setting-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--glass-bg);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+.setting-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+select,
+button {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  font-size: 0.875rem;
+  transition: var(--transition);
+}
+
+select:hover,
+button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-color);
+}
+
+button.primary {
+  background: var(--accent-color);
+  color: #0f172a;
+  border: none;
+  font-weight: 600;
+}
+
+button.primary:hover {
+  box-shadow: 0 0 15px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+#nav-controls button {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  background: var(--accent-glow);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+#nav-controls button:hover {
+  background: var(--accent-color);
+  color: #0f172a;
+}
+
+#current-index-label {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+/* Main Content Area */
+main {
+  flex: 1;
+  padding: 1rem 2rem;
+  overflow-y: auto;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+}
+
+.empty-state h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+/* Comparison Grid */
+.comparison-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.image-unit {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+.unit-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filename {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--accent-color);
+}
+
+.image-grid {
+  display: grid;
+  gap: 5px;
+  /* Reduced gap as requested */
+  width: 100%;
+}
+
+.grid-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  transition: var(--transition);
+}
+
+.grid-item:hover {
+  border-color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.img-container {
+  aspect-ratio: 16/10;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  /* Prevent default touch actions like scrolling */
+}
+
+.img-container:active {
+  cursor: grabbing;
+}
+
+.grid-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.1s ease-out;
+  /* Smooth follow, but fast enough for drag */
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.grid-item:hover img {
+  /* Remove hover scale as it conflicts with manual zoom */
+  transform: none;
+}
+
+.label-container {
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.label-filename {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  word-break: break-all;
+  opacity: 0.8;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.label-folder {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+/* Grid Layouts */
+.grid-1-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-2-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-6-6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.grid-8-8 {
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.grid-auto {
+  grid-auto-columns: minmax(200px, 1fr);
+  grid-auto-flow: column;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Hidden file input */
+#folder-input {
+  display: none;
+}
