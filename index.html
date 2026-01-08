@@ -47,6 +47,30 @@
           <button id="next-btn" title="Next Image (Right Arrow)">▶</button>
         </div>
 
+        <div class="settings-menu">
+          <button id="settings-btn" class="icon-button" title="Theme settings" aria-haspopup="dialog"
+            aria-expanded="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor"
+                d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.11-.2-.36-.28-.57-.2l-2.39.96c-.5-.38-1.03-.69-1.62-.94l-.36-2.54A.488.488 0 0 0 14 1h-4c-.24 0-.44.17-.48.41l-.36 2.54c-.59.25-1.13.56-1.62.94l-2.39-.96c-.21-.08-.46 0-.57.2L2.66 7.87c-.11.2-.06.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.11.2.36.28.57.2l2.39-.96c.5.38 1.03.69 1.62.94l.36 2.54c.04.24.24.41.48.41h4c.24 0 .44-.17.48-.41l.36-2.54c.59-.25 1.13-.56 1.62-.94l2.39.96c.21.08.46 0 .57-.2l1.92-3.32c.11-.2.06-.47-.12-.61l-2.03-1.58ZM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5Z" />
+            </svg>
+          </button>
+
+          <div id="settings-panel" class="settings-panel" role="dialog" aria-label="Theme settings">
+            <div class="settings-row">
+              <label for="bg-color">Background</label>
+              <input id="bg-color" type="color" value="#0f172a" />
+            </div>
+            <div class="settings-row">
+              <label for="font-color">Font</label>
+              <input id="font-color" type="color" value="#f1f5f9" />
+            </div>
+            <div class="settings-actions">
+              <button id="reset-theme-btn" type="button">Default</button>
+            </div>
+          </div>
+        </div>
+
         <button id="select-btn" class="primary">Select Folders</button>
         <input type="file" id="folder-input" webkitdirectory directory multiple />
       </div>
